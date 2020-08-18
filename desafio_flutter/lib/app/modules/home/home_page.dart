@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'home_controller.dart';
 
@@ -15,7 +16,12 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
   String buttonText = "ENTRAR";
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -91,6 +97,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
                           ),
                         ),
                         child: TextField(
+                          onChanged: (value) {
+                            setState(() {});
+                          },
+                          keyboardType: TextInputType.text,
                           obscureText: true,
                           textAlign: TextAlign.start,
                           decoration: InputDecoration(
